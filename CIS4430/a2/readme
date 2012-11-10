@@ -1,0 +1,20 @@
+/**
+ * CIS*4430 Information Organization and Retrieval
+ * Assignment #2, due: Thursday, March 22, 2001
+ * Michael Bochenek [ID: 0041056]
+ * email: mboche01@uoguelph.ca
+ */
+
+COMPILING:
+- type 'make' to compile.
+  (JDK must be installed)
+
+EXECUTION:
+- type 'make run' or 'java Main' to execute the program.
+
+KEY ASSUMPTIONS:
+- EVERYTHING is case sensitive (table names, attribute names).
+
+KNOWN BUGS:
+- none
+

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# CREATE A TEXT MESSAGE TO BE USED BY THE SENDMAIL COMMAND
+# Michael Bochenek September 2000 mboche01@uoguelph.ca
+
+echo "Date: $(date)" >> message 
+echo "From: ta150@snowhite.cis.uoguelph.ca" >> message
+echo "To: $5@uogueph.ca" >> message
+echo "Subject: CIS*1500 Assignment #1 Mark" >> message
+echo "" >> message
+
+echo "Your assignment was marked as follows: " >> message
+echo "" >> message
+echo "1) compilation correctness (1 mark):  $1" >> message 
+echo "2) correct output from execution (1 mark):  $2" >> message
+echo "3) program design (1 mark):  $3" >> message
+echo "4) correct style, indentation, good comments and other factors (1 mark):  $4" >> message
+echo "" >> message
+
+echo "Your total mark is: $(($1 + $2 + $3 + $4)) / 4" >> message
+echo "" >> message
+echo "If you have any questions or concerns, email ta150@snowhite.cis.uoguelph.ca," >> message
+echo "or see the TA during the scheduled lab hours." >> message
+ 
+
+exit 0

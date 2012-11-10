@@ -1,0 +1,90 @@
+#!/bin/sh
+
+# MARK A SINGLE PERSON 
+# Michael Bochenek September 2000 mboche01@uoguelph.ca
+
+# filename=$1.A1.1561
+source_filename_a=assign1a.c
+source_filename_b=assign1b.c
+
+# ls $1* -l               // old version, ignore..
+# read number             // old version, ignore...
+# filename=$1.A1.$number  // old version, ignore....
+
+echo "[0] select the file that will be used for marking."
+allfiles=$(ls $1* -t -1)
+length=${#allfiles}
+while [ $length -ne 0 ]; do
+	filename=${allfiles%$1*}
+	tempfilename=$allfiles
+	allfiles=$filename
+   length=${#allfiles}
+done
+filename=$tempfilename
+echo "ALL files submited by $1 are:"
+ls $1* -l
+echo "File selected for marking is: $filename"
+pause
+
+echo "[1] create a new directory for the current student."
+mkdir $1
+
+echo "[2] copy file to the new directory."
+cp $filename $1
+
+echo "[3] change into the new directory."
+cd $1
+
+echo "[4] gunzip and untar the file."
+gzip -d $filename
+tar xvf * 
+
+echo "[5] compile both source files and pause."
+gcc -Wall -ansi $source_filename_a -o $source_filename_a.out
+gcc -Wall -ansi $source_filename_b -o $source_filename_b.out
+../pause
+
+echo "[6] run both executables."
+$source_filename_a.out
+../pause
+$source_filename_b.out
+../pause
+
+echo "[7] view both source files."
+more $source_filename_a
+../pause
+more $source_filename_b
+../pause
+
+echo ""
+echo ""
+echo ""
+echo "[8] enter the marks."
+echo -n "1) compilation correctness (1 mark):"
+read compile_mark
+echo -n "2) correct output from execution (1 mark):"
+read execute_mark
+echo -n "3) program design (1 mark):" 
+read design_mark
+echo -n "4) correct style, indentation, good comments and other factors (1 mark):  " 
+read style_mark
+
+echo "[9] create _message_ file for automatic sending."
+../create_message $compile_mark $execute_mark $design_mark $style_mark $1
+
+echo "[10] view contents of the directory now."
+ls -l
+
+echo "[11] print _message_ file to the screen for approval."
+more message
+
+echo "[12] ARE YOU SURE THAT YOU WANT TO SEND OUT THIS FILE???"
+echo "     PRESS CTRL-C TO STOP"
+../pause
+
+echo "[13] send out the _message_ file."
+sendmail $1@uoguelph.ca < message
+
+echo "[14] DONE."
+
+exit 0

@@ -1,0 +1,64 @@
+Michael Bochenek (ID) 0041056
+CIS 3430 Assignment #1
+
+                     SOFTWARE REQUIREMENTS SPECIFICATION
+
+1. Introduction
+- The software system will simulate an online shop through two interfaces.  
+  1) The Customer Manager will manage a database of customers. 
+  2) The Product Manager will manage a database of products.
+
+2. Information Description
+- The database will be saved in a plain text file.  
+  (This means that in theory the data file could be modified, but this 
+  is not recommonded since the data is saved in a special format.)
+- Customer database:
+  - will contain the following fields: surname, given name, e-mail,
+	 phone number, mailing address, age group, sex, money spent by customer,
+	 date of last purchase, permissions to receive e-mail promotions.
+  - the customer database will be sorted by surname
+    - if any surnames are the same, the entries will be sorted by given name
+    - if any given names are the same, the entreis will be sorted by E-mail
+- Product database:
+   - will contain the following fields: reference name, UPC, price,
+	  amount on hand, delievery time, cost, supplier.
+   - the product database will be sorted by reference name
+     - if any reference names are the same, the entries will be sorted by UPC
+
+3. Functional Description
+- Customer Manager:
+  1) Inclusion - new customers will be added (in correct order) into
+     database.  Trying to enter duplicate customers will result in error.
+	  (Duplicate customers are customers that have identical surnames,
+	  given names, and e-mail addresses).
+  2) Modification - first the user would specify which customer to edit, and 
+     once this customer is found, the user would be able to modify the fields
+  3) Deletion - the user would enter the surname or given name or e-mail of the
+     customer to be deleted, and the system would request confirmation
+	  before a deletion is performed.  If multiple customers match the criteria
+	  then a prompt will be displayed for each customer.
+  4) Query - 
+  5) E-mail - sending of promotional e-mail to users is simulated (by writing
+     to the screen).   Only the users that agreed to receive mass e-mails
+	  will be included in the mailing list.
+- Product Manager:
+  1) Inclusion - new products will be added (in correct order) into database.
+     Trying to enter duplicate products will result in error. (Duplicate 
+	  products are products that have identical reference names, and UPCs)
+  2) Modification - first the user would specify which product to edit, and
+     once this product is found, the user would be able to modify the fields
+  3) Deletion - the user would enter the reference name or UPC or supplier
+     of he product to be deleted, and the system would request confirmation
+	  before a deletion is performed.  If multiple products match the criteria
+	  then a prompt will be displayed for each product.
+  4) Supply Query - the user will enter search criteria, and a list
+     of products will be generated.  From this list, only the products which
+	  have less than 10 items on hand will be selected.  This list of products
+	  (and associated information) will be displayed.
+
+4. Validation Criteria
+- Items should be added, deleted, searched in the database efficiently.
+  (those operations should preferably have a time complexity of lg (n))
+- The user should be notified of when an error occurs when writing/reading
+  to/from the database file.
+

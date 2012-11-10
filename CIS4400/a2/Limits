@@ -1,0 +1,19 @@
+Michael Bochenek
+mboche01@uoguelph.ca
+0041056
+CIS*4400 Distributed Information Systems Architectures
+Assignment 2:  Talking to the magic ORB!
+
+LIMITS
+-------
+
+- works for file(s) provided and not 100% flexible for changes to files
+  (assuming that the colon (':') is where the data starts)
+- limited to n features, where n is currently equal to 128
+- name of filename storing data is assumed to be the name of the dataset
+- Median values or different from median values provided in example
+  (note that median for an even number of elements is determined arbitrarily)
+- The client program is 'blocked' when it adds data to the dataset since
+  it indirectly waits for the server to accept the data so that the 
+  client can get statistics on that dataset.
+

@@ -1,0 +1,259 @@
+                                  CIS*4600
+                     Elements of Theory of Computation
+                             Course Assignments
+
+Assignment 4 - Due Date: Thursday, Nov. 30, 2000
+
+This assignment consists of a small written portion and a small programming
+portion. For the written portion, you will design a Turing machine that
+accepts the set {(ab*)^n | n is a power of 2}. For the programming portion
+you will write a program that implements this specific Turinig machine and
+documents its operation as it runs.
+
+The written portion
+
+You must implement at Turing machine that accepts the set {(ab*)^n | n is a
+power of 2}. Write out a formal mathematical description of the Turing
+machine and hand it in on a piece of paper, delivered to Ms. Colleen O'Brien
+in the CIS Main Office.
+
+The program
+
+Write a program which takes one argument as its input. The argument is a
+string of a's and b's assumed to be the contents of a tape infinite in one
+direction describing the particular instance of the problem to be solved.
+The first symbol in the string is the left most tape symbol. You should
+assume that that last symbol in the string is followed by an infinite number
+of blank symbols.
+
+Your program must implement the Turing machine that you designed for the
+written part of the assignment (and only that Turing machine). You do not
+need to write a general Turing machine simulator.
+
+Your program should output a description of each step in the machines
+operation.You should clearly indicate the following information for each
+step:
+
+   * the symbol to be written under the current tape head position
+   * the direction of travel after writing the symbol (left or right)
+   * the state of the automaton after the transition
+   * contents of the tape indicating the position of the head after writing
+     the symbol and moving the head (you do not have to print out the entire
+     tape {ha, ha, ha}, just he part with symbols on it).
+
+You may write your program in any of the following langauges: C, C++, Tcl,
+Python, or Java. Good program style is a requirement. You will provide a
+makefile if you are using a compiled programming language; the simple
+command "make" (with no arguments) must build your code. You must provide an
+executable (binary, or shell script), called "a1" which executes your code
+when supplied with the two filenames detailed above. Note to Java users:
+write a shell script which calls the JVM on the Java byte-code and passes
+through the command line arguments. You may assume that the programs "java",
+"javac", "gcc", "g++", "python" and "tcl" are in the user's path. It is
+recomended that you work in a scripting language that supports lists and
+associative arrays.
+
+Hand in proceedure
+
+Name your files as follows:
+makefile - file used to make programs (required for compiled langauges)
+a4 - assignment 4 executable (required for script languages only)
+README - a file containing your name, student ID, and instructions for
+compiling and running your program.
+
+Include source code files required by the makefile in the same directory.
+Type "tar cvfz ../skremer.tgz *" (except replace my login ID with yours).
+This will create the file skremer.tgz in the parent directory. (You don't
+want to create the tgz file in the current directory or it will try to
+recursively include itself).
+
+Select the HAND-IN link on the web-page, and follow the instructions to send
+in your file.
+  ------------------------------------------------------------------------
+
+Assignment 3 - Due Date: Thursday, Nov. 16, 2000
+
+This assignment consists of a small programming portion and a small written
+portion. For the programming portion you will write a program that simulates
+a deterministic PDA. For the written portion, you will produce 2 D-PDA for
+given context-free grammars.
+
+The program
+
+Write a program which takes as input two files. The first file will contain
+a description of a deterministic pushdown automaton. You may select any way
+of representing PDA in the file you like, but it must be general enough to
+handle any PDA, and it must be practical enough for you to not hate using
+it. You may build this assignment on assignment 1, or start a new.
+
+The second input file will contain input strings, one string per line.
+Individual symbols in the string will be comma separated. Each symbol will
+consist of one or more characters but the characters "comma" and "newline"
+are not permitted (for obvious reasons). All other characters are valid.
+Note that the representation chosen for file 1 must support symbols of the
+type described here.
+
+Your program will process the second file by writing each input string to
+the screen (exactly as it appears in the input file), followed by a colon,
+followed by the word "accept" or "reject" without the quotes.
+
+You may write your program in any of the following langauges: C, C++, Tcl,
+Python, or Java. Good program style is a requirement. You will provide a
+makefile if you are using a compiled programming language; the simple
+command "make" (with no arguments) must build your code. You must provide an
+executable (binary, or shell script), called "a1" which executes your code
+when supplied with the two filenames detailed above. Note to Java users:
+write a shell script which calls the JVM on the Java byte-code and passes
+through the command line arguments. You may assume that the programs "java",
+"javac", "gcc", "g++", "python" and "tcl" are in the user's path. If you are
+not building on your code from assignment 1, it is highly recomended that
+you work in a scripting language that supports lists and associative arrays.
+
+The problems:
+
+1.  S --> SS | [S] | E
+2.  S --> S+A | S-A | A
+    A --> A*B | A/B | B
+    B --> a | b | c | (S)
+
+Hand in a paper copy of your automata in addition to your electronic
+submission.
+
+Assignment 2 - Due Date: Thursday, Nov. 2, 2000
+
+This assignment consists of only a programming portion. You will write a
+program that takes an arbitrary regular expression as input and produces a
+description of a DFA as output. Your DFA description must be written to a
+file that is compatible with your program from Assignment 1.
+
+The input to your program will be given on the command line placed in
+quotation marks to prevent special characters like "*" and "+" from being
+missinterpreted, and be formatted as per the example:
+
+  0*(101+1001+E)
+
+The only symbols that your program must handle are 0 and 1. "E" represents
+the empty string. "*" represents the Kleene and "+" represents union (or),
+while juxtaposition represents concatenation.
+
+Your program must be able to convert any regular expression.
+
+You may write your program in any of the following langauges: C, C++, Tcl,
+Python, or Java, Javalec, CUP. Good program style is a requirement. You will
+provide a makefile if you are using a compiled programming language; the
+simple command "make" (with no arguments) must build your code. You must
+provide an executable (binary, or shell script), called "a2" which executes
+your code when supplied with the two filenames detailed above. Note to Java
+users: write a shell script which calls the JVM on the Java byte-code and
+passes through the command line arguments. You may assume that the programs
+"java", "javac", "gcc", "g++", "python" and "tcl" are in the user's path.
+
+Hand in proceedure
+
+Name your files as follows:
+makefile - file used to make programs (required for compiled langauges)
+a2 - assignment 2 executable (required for script languages only)
+test - test string file containing all string of length less than or equal
+to 6
+README - a file containing your name, student ID, and instructions for
+compiling and running your program.
+
+If you changed your code for a1 since handing it it, you should also include
+the source code for a1. (Otherwise you don't have to).
+
+Include source code files required by the makefile in the same directory.
+Type "tar cvfz ../skremer.tgz *" (except replace my login ID with yours).
+This will create the file skremer.tgz in the parent directory. (You don't
+want to create the tgz file in the current directory or it will try to
+recursively include itself.
+
+Select the HAND-IN link on the web-page, and follow the instructions to send
+in your file.
+  ------------------------------------------------------------------------
+
+Assignment 1 - Due Date: Tusday, Oct. 3, 2000
+
+This assignment consists of a written portion and a programming portion. In
+the written portion you will produce various DFA. For the programming
+portion you will write a program that implements arbitrary DFA. You will
+test this program and your work in the written portion of the assignment by
+running your answers from the written part through your program.
+  ------------------------------------------------------------------------
+
+The program
+
+Write a program which takes as input two files. The first file will contain
+a description of a deterministic finite state automaton. You may select any
+way of representing DFA in the file you like, but it must be general enough
+to handle any DFA, and it must be practical enough for you to not hate using
+it. Hint: Think M=(Q,Sigma,delta,s,F).
+
+The second input file will contain input strings, one string per line.
+Individual symbols in the string will be comma separated. Each symbol will
+consist of one or more characters but the characters "comma" and "newline"
+are not permitted (for obvious reasons). All other characters are valid.
+Note that the representation chosen for file 1 must support symbols of the
+type described here.
+
+Your program will process the second file by writing each input string to
+the screen (exactly as it appears in the input file), followed by a colon,
+followed by the word "accept" or "reject" without the quotes.
+
+You may write your program in any of the following langauges: C, C++, Tcl,
+Python, or Java. Good program style is a requirement. You will provide a
+makefile if you are using a compiled programming language; the simple
+command "make" (with no arguments) must build your code. You must provide an
+executable (binary, or shell script), called "a1" which executes your code
+when supplied with the two filenames detailed above. Note to Java users:
+write a shell script which calls the JVM on the Java byte-code and passes
+through the command line arguments. You may assume that the programs "java",
+"javac", "gcc", "g++", "python" and "tcl" are in the user's path.
+
+The problems:
+
+For each of the following language descriptions, (a) draw a DFA transition
+diagram for a DFA that accepts exactly the langauge, (c) translate the DFA
+into a file with the appropriate input format for you program above,
+generate all strings in the Kleene of the input alphabet from lengh 0 to 6
+(hint use a computer program to do this) and verify the correct output of
+the program.
+
+  1. the set of strings in {4,8,1}* containing the substring 481;
+  2. the set of strings in {a}* whose length is divisible by either 2 or 7;
+  3. the set of strings in {0,1}* such that the the number of zeros is even
+     and the number of ones is a multiple of three;
+  4. the set of strings over the alphabet {a,b} containing at least three
+     occurrences of three consecutive b's overlapping permitted (e.g the
+     string bbbbb should be accepted);
+  5. the set of strings in {0,1,2}* that are ternary (base 3)
+     representations, leading zero's permitted, of numbers that are not
+     multiples of four (consider the null string a representation of zero);
+  6. the set of strings in {"(",")"}* with balanced parentheses.
+
+Hand in proceedure
+
+Name your files as follows:
+makefile - file used to make programs (required for compiled langauges)
+a1 - assignment 1 executable (required for script languages only)
+que1 - test strings for question 1
+ans1 - automaton file for question 1
+que2 - test strings for question 2
+ans2 - automaton file for question 2
+que3 - test strings for question 3
+ans3 - automaton file for question 3
+que4 - test strings for question 4
+ans4 - automaton file for question 4
+que5 - test strings for question 5
+ans5 - automaton file for question 5
+que6 - test strings for question 6
+ans6 - automaton file for question 6
+Include source code files required by the makefile in the same directory.
+Type "tar cvfz ../skremer.tgz *" (except replace my login ID with yours).
+This will create the file skremer.tgz in the parent directory. (You don't
+want to create the tgz file in the current directory or it will try to
+recursively include itself.
+
+Select the HAND-IN link on the web-page (coming soon), and follow the
+instructions to send in your file. Date of Last Update: Tuesday, November
+21, 2000 12:06:28 PM.
+  ------------------------------------------------------------------------

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# WAIT FOR USER TO PRESS ENTER 
+# mboche01@uoguelph.ca
+
+echo "<enter to continue>"
+read nothing
+
+exit 0

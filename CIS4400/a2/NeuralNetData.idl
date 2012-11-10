@@ -1,0 +1,32 @@
+
+
+
+module NeuralNetDataManager
+{
+	interface NeuralNetData
+	{
+		exception datasetExistsException {};
+
+		typedef double doubleDataArray [128];
+		typedef boolean boolTypeArray [128];
+
+		void init (in string name, in boolTypeArray featureType, in long featureCount) raises (datasetExistsException);
+		void addSingleSample (in string name, in doubleDataArray featureData);
+		long getFeatureCount (in string name);
+		long getSampleCount (in string name);
+		boolean getFeatureType (in string name, in long featureNum);
+
+		double getMaxFeatureValue (in string name, in long featureNum);
+		double getMinFeatureValue (in string name, in long featureNum);
+		double getMeanFeatureValue (in string name, in long featureNum);
+		double getMedianFeatureValue (in string name, in long featureNum);
+
+		string getSample (in string name, in long sampleNum);
+		string getNormalizedSample (in string name, in long sampleNum);
+
+		string getRandomSampleSet (in string name);
+		string getRemainingSampleSet (in string name, in string delimitedList);
+	};
+};
+
+

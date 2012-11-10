@@ -1,0 +1,6 @@
+mkdir ~/submit_dir
+tar -c --preserve * > ~/submit_dir/tmp.tar
+cd ~/submit_dir 
+chmod 777 tmp.tar
+~ta343/submit2
+rm -rf ~/submit_dir

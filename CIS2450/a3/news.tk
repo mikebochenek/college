@@ -1,0 +1,317 @@
+#!/usr/bin/wish -f
+
+# By:  Michael Bochenek (980492820 [0041056] )
+# CIS*2450 Assignment #3
+
+set order date
+set newsgroup x6969
+global thread
+global line
+global article
+global references
+global num_lines
+
+set num_lines 0
+set thread 0
+set article 0
+set references 0
+
+set arrow1 [image create bitmap -file left.xbm]
+set arrow2 [image create bitmap -file right.xbm]
+
+wm title . "CIS*2450 NewsReader System:"
+set x [expr [winfo rootx .]]
+set y [expr [winfo rooty .]]
+wm geometry . "+$x+$y"
+
+#----------------------------------------------------------------------
+frame .mbar -relief raised -bd 2
+menubutton .mbar.select -text "Newsgroup"  -underline 0 -menu .mbar.select.menu
+menubutton .mbar.order  -text "Sort Field" -underline 0 -menu .mbar.order.menu
+menubutton .mbar.action -text "Action"     -underline 0 -menu .mbar.action.menu
+button     .mbar.close  -text "Close"      -underline 0 -command {exitDialog2}
+pack .mbar.select .mbar.order .mbar.action -side left 
+pack .mbar.close                           -side right -fill x 
+
+menu .mbar.select.menu 
+.mbar.select.menu add command -label "Display Available Newsgroups" \
+   -command {listDir} 
+
+menu .mbar.action.menu
+.mbar.action.menu add command -label "Display Table of Contents" \
+   -command {runNews}
+.mbar.action.menu add command -label "Clear Displays" \
+   -command {clearDisplays}   
+
+menu .mbar.order.menu 
+.mbar.order.menu add radiobutton -label Date \
+   -variable order -value date \
+   -command {.status delete 0 end ; \
+      .status insert end \
+      "User has selected Sort Field: $order.  Select 'Action' to sort." }
+.mbar.order.menu add radiobutton -label From \
+   -variable order -value from \
+   -command {.status delete 0 end ; \
+      .status insert end \
+      "User has selected Sort Field: $order.  Select 'Action' to sort." }
+.mbar.order.menu add radiobutton -label Subject \
+   -variable order -value subject \
+   -command {.status delete 0 end ; \
+      .status insert end \
+      "User has selected Sort Field: $order.  Select 'Action' to sort." }
+
+#----------------------------------------------------------------------
+frame .toc  -relief raised -bd 2
+label .toc.label_toc -text " "
+pack  .toc.label_toc -side left
+
+scrollbar .v_scroll -command ".text_toc yview"
+scrollbar .h_scroll -orient horizontal -command ".text_toc xview"
+listbox   .text_toc -selectmode single -width 100 -height 6 -font courier \
+                    -setgrid 1 -xscroll ".h_scroll set" -yscroll ".v_scroll set"
+
+frame .art_disp  -relief raised -bd 2
+label .art_disp.label2 -text "Article Display"
+label .art_disp.label3 -text "Article 0 of 0"    
+pack  .art_disp.label2 -side left
+pack  .art_disp.label3 -side right
+
+label .from     -text "From: "
+label .date     -text "Date: "
+label .subject  -text "Subject: "
+label .lines    -text "Lines: "
+
+scrollbar .h2     -orient horizontal -command ".mess xview"
+scrollbar .horiz2 -command ".mess yview"
+listbox   .mess -selectmode single -width 100 -height 10 -font courier \
+                -setgrid 1 -xscroll ".h2 set" -yscroll ".horiz2 set"
+
+frame .arrows
+button .arrows.l_icon -image $arrow1
+pack  .arrows.l_icon -side left -padx 160 -pady 8
+button .arrows.r_icon -image $arrow2
+pack  .arrows.r_icon -side right -padx 160 -pady 8 
+
+listbox   .status -selectmode single -width 85 -height 1 -setgrid 1
+label     .label1 -text "System Status"
+                
+#----------------------------------------------------------------------
+grid .mbar      -row 0 -column 0 -columnspan 2 -sticky "ew"
+grid .toc       -row 1 -column 0 -columnspan 2 -sticky "ew"
+
+grid .v_scroll  -row 2 -column 1 -sticky "ns"
+grid .text_toc  -row 2 -column 0 -sticky "we"
+grid .h_scroll  -row 3 -column 0 -columnspan 2 -sticky "we"
+
+grid .art_disp  -row 4 -column 0 -columnspan 2 -sticky "we"
+
+grid .from      -row 5 -column 0               -sticky "w"
+grid .date      -row 5 -column 0 -columnspan 2 -sticky "e"
+grid .subject   -row 6 -column 0               -sticky "w"
+grid .lines     -row 6 -column 0 -columnspan 2 -sticky "e"
+
+grid .mess      -row 7 -column 0 -sticky "we"
+grid .horiz2    -row 7 -column 1 -sticky "ns"
+grid .h2        -row 8 -column 0 -columnspan 2 -sticky "ew"
+
+grid .arrows    -row 9 -column 0 -sticky "we"
+
+grid .status    -row 10 -column 0 -columnspan 2 -sticky "es"
+grid .label1    -row 10 -column 0 -sticky "ws"
+
+#----------------------------------------------------------------------
+bind .arrows.l_icon <ButtonRelease-1> \
+   { if {$article > 1 || 0 == $references || 0 == $article} { 
+        set article [expr $article - 1]; \
+        showArticle; \
+     } else { .status delete 0 end; \
+              .status insert end "This is the first article in the thread" } }
+
+bind .arrows.r_icon <ButtonRelease-1> \
+   { if {$article < $references || 0 == $references || 0 == $article} {
+        set article [expr $article + 1]; \
+        showArticle; \
+     } else { .status delete 0 end; \
+              .status insert end "This is the last article in the thread" } }
+
+bind .text_toc <Double-ButtonRelease-1> \
+   { if {0 != $num_lines} { set thread [%W index [%W curselection]]; \
+     set line   [%W get [%W curselection]]; \
+     set article 1; \
+     set thread [string range $line 0 3]; \
+     set reference_position [expr [string length $line] - 2]; \
+     set references [string range $line $reference_position end]; \
+     set references [expr $references + 1]; \
+     showArticle } }
+
+#----------------------------------------------------------------------
+proc runNews args {
+   upvar order order
+   upvar newsgroup newsgroup
+   upvar num_lines num_lines
+   .text_toc delete 0 end
+
+   clearDisplays
+
+   if {0 == [string compare "x6969" $newsgroup] } { 
+       .status delete 0 end; \
+       .status insert end "A newsgroup must be selected"; \
+       return 
+   }
+   
+   set num_lines 0
+   set fid [open "| news -g $newsgroup -s $order"]
+   while {![eof $fid]} {
+      set num_lines [expr $num_lines + 1]
+      .text_toc insert end [gets $fid]
+   } 
+   close $fid
+
+   set num_lines [expr $num_lines - 1]
+   .text_toc delete $num_lines 
+
+   .toc.label_toc configure \
+         -text "Table of Contents of '$newsgroup' sorted by $order"
+         
+   .status delete 0 end
+   .status insert end "Displayed table of contents for '$newsgroup'"
+
+   if {0 >= $num_lines} { 
+       .status delete 0 end
+       .status insert end "Error:  No articles in newsgroup" }
+         
+   return
+}
+
+proc showArticle args {
+   upvar newsgroup newsgroup
+   upvar thread thread
+   upvar article article
+   upvar references references
+   
+   if {0 == $thread || 0 == $article} {
+      .status delete 0 end
+      .status insert end "The user must select a thread first"
+      return
+   }
+   
+   .mess delete 0 end
+   .art_disp.label3 configure -text "Article $article of $references"
+   .status delete 0 end
+   .status insert end \
+       "Showing thread: $thread  article: $article of $references"
+   
+   set fid [open "| news -g $newsgroup -thread $thread -article $article"]
+   while {![eof $fid]} {
+      set myline [gets $fid]
+      
+      if {1 == [regexp "^From:" $myline]} {
+         .from configure -text $myline
+      }
+      if {1 == [regexp "^Subject:" $myline]} {
+         .subject configure -text $myline
+      }
+      if {1 == [regexp "^Date:" $myline]} {
+         .date configure -text $myline
+      }
+      if {1 == [regexp "^Lines:" $myline]} {
+         .lines configure -text $myline
+      }
+      if {1 == [regexp "^$" $myline]} {
+         break
+      }
+   } 
+
+   while {![eof $fid]} {
+      .mess insert end [gets $fid]
+   } 
+
+   close $fid
+
+   return
+}
+
+proc clearDisplays args {
+   upvar thread thread
+   upvar article article
+   upvar references references
+   upvar num_lines num_lines
+   set thread 0
+   set article 0
+   set references 0
+   set num_lines 0
+
+   .text_toc delete 0 end
+   .mess     delete 0 end
+   .from     configure -text "From: "
+   .date     configure -text "Date: "
+   .subject  configure -text "Subject: "
+   .lines    configure -text "Lines: "
+   .art_disp.label3 configure -text "Article 0 of 0"    
+   .toc.label_toc configure -text " "
+   .status delete 0 end
+   .status insert end "Cleared all displays"
+}
+
+proc exitDialog2 args {set answer [tk_messageBox  \
+      -message "Do you really want to quit?"  -type okcancel];  \
+      if { $answer == "ok" } { exit }}
+ 
+proc listDir args {
+   upvar newsgroup newsgroup
+   
+   if [winfo exists .sf] {
+      wm deiconify .sf
+      raise .sf
+      return
+   }
+
+   toplevel .sf 
+   wm title .sf "Select Newsgroup..."
+ 
+   scrollbar .sf.horiz -orient horizontal -command ".sf.dir xview"
+   scrollbar .sf.vert  -command ".sf.dir yview"
+
+   listbox .sf.dir -selectmode single -width 20 -height 10 \
+             -setgrid 1 -xscroll ".sf.horiz set" -yscroll ".sf.vert set"
+
+   button .sf.close -text "Close" -width 15 \
+      -command {wm withdraw .sf}
+   button .sf.select -text "Select" -width 15 \
+      -command {set newsgroup [ .sf.news get 0 ]; \
+        wm withdraw .sf; \
+        clearDisplays
+        wm title . "CIS*2450 NewsReader System: $newsgroup"
+        .status delete 0 end; \
+        .status insert end \
+        "Selected newsgroup: '$newsgroup'.  Select 'Action' to display."; \
+        if {1 != [file isdirectory $newsgroup] } { set newsgroup x6969; \
+           wm withdraw .sf; \
+           clearDisplays
+           .status delete 0 end; \
+           .status insert end "Invalid newsgroup selected.  Try again." } }
+
+   label  .sf.label4 -text "Selected Newsgroup:"
+   listbox .sf.news -width 20 -height 1
+
+   grid .sf.dir    -row 0 -column 0 -sticky "news"
+   grid .sf.vert   -row 0 -column 1 -sticky "ns"
+   grid .sf.horiz  -row 1 -column 0 -sticky "we"
+   grid .sf.close  -row 4 -column 2 -sticky "we"
+
+   grid .sf.label4 -row 2 -column 0 -sticky "w"
+   grid .sf.news   -row 3 -column 0 -columnspan 2 -sticky "we"
+
+   grid .sf.select -row 4 -column 0 -sticky "w"
+
+   grid columnconfigure . 0 -weight 1
+   grid rowconfigure    . 0 -weight 1
+
+   bind .sf.dir <ButtonRelease-1> \
+      { .sf.news delete 0 end; \
+        .sf.news insert end [%W get [%W curselection]] }   
+
+   foreach file [glob *] {
+      .sf.dir insert end $file
+   }
+}

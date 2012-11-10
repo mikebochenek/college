@@ -1,0 +1,188 @@
+﻿ TABLE OF CONTENTS
+------------------
+
+CHAPTER 1:  INTRODUCTION
+  1.1  What is the Mandelbrot Set?
+  1.2  About MandelView 1.0
+CHAPTER 2:  INSTALLING THE PROGRAM
+  2.1  Minimum requirements
+  2.2  How to install the program
+  2.3  Files needed to run the program
+CHAPTER 3:  FEATURES
+  3.1  Current Features
+  3.2  Additional features in upcoming releases
+CHAPTER 4:  USER'S GUIDE
+  4.1  User's Guide
+CHAPTER 5:  TROUBLESHOOTING 
+  5.1  Troubleshooting
+  5.2  How to contact the author
+
+ CHAPTER 1:  INTRODUCTION
+--------------------------
+
+1.1  What is the Mandelbrot Set?
+
+Before anyone starts using MandelView 1.0, it is crucial to know
+what the Mandelbrot Set is.  First of all, the Mandelbrot Set is
+named after Benoit B. Mandelbrot, who was a researcher at the IBM
+Thomas J. Watson Research Centre in Yorktown Heights, New York. 
+Basically, the Mandelbrot Set is a famous fractal (a fractal is
+defined as a shape that contains an infinite amount of detail). 
+No matter how much the Mandelbrot Set is enlarged, there is still
+more detail to be revealed by enlarging it more.  MandelView 1.0
+is a tool that allows the user to display the Mandelbrot Set on
+the computer screen, and enlarge any part of it by "zooming-in"
+with the mouse.
+
+1.2  About MandelView 1.0
+
+MandelView 1.0 was created using Microsoft Visual Basic 4.0 as an
+independent study project for my computer programming class. 
+There is good chance that there will be another release with a
+number of improvements in the future.
+
+ CHAPTER 2:  INSTALLING THE PROGRAM
+------------------------------------
+
+2.1  Minimum requirements
+
+The minimum requirements are:
+- 386 processor
+- 4 megabytes of RAM
+- approximately 1.8 megabytes of hard disk space
+- a mouse
+- Windows 3.1 or later
+Note that when zooming, this program performs millions of
+calculations per second, and therefore a 386 will be much, much
+slower than a Pentium (for example, a 386DX 40 Mhz will take
+about 10 TIMES as much time as a Cyrix 166 Mhz).  However, the
+amount of RAM does not effect the performance of the program as
+drastically as the CPU.
+
+2.2  How to install the program
+
+There is no special installation procedures.  Simply copy the
+files into any directory and run MAIN.EXE.  For example, in MS-
+DOS you might type the following commands.
+     C:\>MD MANDEL
+     C:\>CD MANDEL
+     C:\>COPY A:\*.* C:
+
+2.3  Files needed to run the program
+
+All the files that are necessary to run this program should be
+included in the ZIP file.  For general knowledge, these are the
+files:
+     filename:      size:     use:
+     BOOKMARK.DAT   varies    File with all your bookmarks
+     MAIN.EXE       62 KB     The Executable
+     OC25.DLL       524 KB    Dynamic Link Library (needed)
+     README.DOC     12 KB     Digital Manual
+     TYPELIB.DLL    174 KB    Dynamic Link Library (needed)
+     VB40016.DLL    914 KB    Dynamic Link Library (needed)
+
+ CHAPTER 3:  FEATURES
+----------------------
+
+3.1  Current Features
+
+- Zoom into any area of the Mandelbrot Set by drawing a box
+around the area with the mouse
+- Add favourite spots into a bookmark and then retrieve them
+- Save images into 16 million colours .TGA files with user
+specified dimensions and filename
+- Change the size of the window
+- Be able to backtrack during a session
+- Adjust the number of iterations
+- Adjust the colours used
+- A progress bar
+- Help in a .TXT file
+
+3.2  Additional features in upcoming releases
+
+- Online help
+- Save images into .GIF and .JPG
+- More control over the colours used
+- Ability to cancel an operation at any time
+
+
+ CHAPTER 4:  USER'S GUIDE
+--------------------------
+
+4.1  User's Guide
+
+When you first run the program, it automatically calculates the
+main start up image.  The progress bar will display the progress
+and please be patient, because on some machines it may take a
+while.  From there on you are on your own.
+
+You may zoom into any area that you want using the mouse.  Click
+and hold the left mouse button in the approximate area where you
+want the upper-right corner of the zoombox to be.  Then, drag the
+mouse down and to the left (while holding the mouse button) until
+a white box appears around the area that you want to zoom into. 
+When you are satisfied with your selection, then you should let
+go of the left mouse button.  At that time the computer will
+again recalculate and zoom into your selected area.  Again, this
+may take a while.  In this way you can zoom as much as you
+desire.
+
+If after zooming, you are not satisfied with the new image, you
+can easily go back to the previous screen by going to the
+"Bookmarks" menu and selecting the "Back" option.  An the other
+hand, if you really like the new image, you may want to add it to
+your list of bookmarks by going to the "Bookmarks" menu and
+selecting the "Add to bookmark" option.  This bookmark is
+automatically saved to the file BOOKMARK.DAT, and is loaded each
+time you run the program.  At any time, you can retrieve the
+saved bookmark by going to the "Bookmarks" menu and selecting "Go
+to bookmark".  This will load up the bookmarks window where you
+can go to a specific bookmark or delete a specific bookmark (Note
+that there is a thumbnail image to help you distinguished your
+bookmarks).  To return to the main screen, simply click cancel. 
+The bookmarks window is very similar to the history window, which
+can be accessed by clicking on the "Go to history" menu item. 
+The history window shows a list of all the zooms that you have
+performed during your current session.
+
+If you want to change the maximum number of iterations or the
+colours used, you can do so in the options menu.  It is really
+recommended that you play around with the color option to find
+out what your changes effect.
+
+At any time, you can resize the window, be sure to note that it
+will take longer to zoom in if your windows is larger.  When you
+find an image that you really like, you have the opportunity to
+save it into a TrueVision Targa bitmap, and you can specify the
+width and height.  To do this, go into the "File" menu and select
+"Save As".  If you want to use it as a wallpaper in Windows, try
+640x480, 800x600, or 1024x768.
+
+If for any reason you should want to start over, rather then
+exiting the program and running it again, simply go to the "File"
+menu and select "Start Over".  Also, "Exit" and "Redraw" is found
+in the "File" menu.  "Redraw" is used to repaint the image in the
+window if you should desire to do so.
+
+ CHAPTER 5:  TROUBLESHOOTING 
+-----------------------------
+
+5.1  Troubleshooting
+
+Here is a list of errors that the user may encounter:
+
+PROBLEM:  When MAIN.EXE is run under Windows 95, the program
+stops with the error message saying that a device attached to the
+system is not functioning.
+FIX:  Run MAIN.EXE again and it will work fine.
+
+PROBLEM:  When I zoom in, the image lacks detail/sharpness.
+FIX:  Increase the maximum number of iterations.  It is useful to
+play around with the colour and iterations options to achieve the
+ultimate experience.
+
+5.2  How to contact the author
+
+There are basically two ways of contacting me:
+1) electronic mail: mbochene@freenet.npiec.on.ca
+

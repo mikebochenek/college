@@ -1,0 +1,19 @@
+Michael Bochenek
+mboche01@uoguelph.ca
+0041056
+CIS*4400 Distributed Information Systems Architectures
+Assignment 2:  Talking to the magic ORB!
+
+Compiling:
+	type 'make'
+
+Execution:
+	type 'osagent &'
+	type 'vbj Server &'
+	type 'vbj Client1 FirstExample pc114-2'
+	type 'vbj Client1 SecondExample pc114-2'
+	type 'vbj Client2 FirstExample pc114-2'
+	type 'vbj Client2 SecondExample pc114-2'
+
+(where pc114-2 is replaced by the name of the machine hostint the Server)
+

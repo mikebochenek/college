@@ -1,0 +1,27 @@
+Michael Bochenek  (ID:) 0041056  (CS:) cs1790  (login id:) mboche01
+CIS 3430 Assignment #2
+
+BUILD:
+make
+
+RUN:
+java ClientGUI
+  * Runs the customer client application
+  * The server application should be executed first
+java Server
+  * Runs the server application
+java CustomerManager
+  * Runs the application that allows local management of customer data
+java ProductManager
+  * Runs the application that allows local management of product data
+java RemoteCustomerManager
+  * Runs the application that allows remote management of customer data
+  * (LOGIN=admin PASSWORD=cis343)
+  * The server application should be executed first
+java RemoteProductManager
+  * Runs the application that allows remote management of product data
+  * (LOGIN=admin PASSWORD=cis343)
+  * The server application should be executed first
+
+LIMITATIONS:
+There are no known limitations.

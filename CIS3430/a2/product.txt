@@ -1,0 +1,15 @@
+AMD Processor;904390212;order@amd.com;123.99;71;4 months;12.99
+Big Server;901903123;order@servers.com;13999.99;110;4 days;12999.99
+Floppy Disks;89438932;supplier@hell.com;12.99;563;2 days;0.18
+gamepad;123019313;buy@gravis.com;12.99;341;4 days;11.99
+High Quality Printing Paper;90450932;cheap@amazon.com;9.99;1067;1 day;1.22
+Invisible Keyboard;903901390;purchase@invisible.com;2999.99;3;Now;199.99
+Joystick;903201910;info@joys.com;13.44;11;3 days;12.99
+Keyboard;093123012;order@keytronic.com;45.12;28;2 weeks;2.11
+Monitor;909031209;order@acer.com;1299.99;6;3 years;999.99
+Mouse;903012931;order@ms.com;12.99;17;5 days;4.12
+Mouse pad;093911312;buy@coolmouse.com;1.59;387;22 hours;1.19
+Netscape Navigator;901213094;info@netscape.com;1.49;300;3 hours;1.19
+Pentium III Processor;234012012;order@intel.com;133.99;6;4 hours;69.99
+Printer;909021093;order@epson.com;1229.12;12;4 months;1099.12
+Very expensive mouse pad;903201023;order@mousepads.com;129.91;2234;1 day;119.99

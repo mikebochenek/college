@@ -1,0 +1,42 @@
+M E T H O D
+
+A.  Setting up the system for testing:
+
+Additional Java classes and scripts were developed to facilitate testing:
+1.) FClient.java was modified (and saved to FClientCommandLine.java) such that the client could be executed from the command line and a request could be made without direct input from stdin.
+2.) The file file0001 was created as a sample data file for transit, and a script setup.sh was created to make 100 copies of this file (named file0nnn, where nnn is a string representation of a random number between 1 and 100).
+3.) GenerateTest.java was created to generate random scripts where multiple FClientCommandLine objects could be instantiated.  This automates the testing process.
+
+B.  Testing Procedure
+
+There are ten steps that were repeatedly performed during testing:
+1.) Create four separate directories (client, server, proxy 1, and proxy 2)
+2.) Modify file0001 to be the desired size.
+3.) Use setup.sh to make 100 duplicates of file0001
+4.) Create a test script (test.sh) using GenerateTest
+5.) Run the server, and proxy 1
+6.) Execute the test script
+7.) Count cache hits and cache misses and then shut down server and proxy 1
+8.) Run the server, and proxy 2
+9.) Execute the test script
+10.) Count cache hits and cache misses and then shut down server and proxy 2
+
+C.  Experiments
+
+There are several variables that can be modified in order to evaluate the performance of the system:
+- number of simultaneous clients that are requesting files without pause
+- size of files that are stored on the server
+- number of total requests made by each client
+- number of unique files stored on the main file server
+
+Type I:
+Number of files stored on the server was substantially higher (typically 100) than the number of available cache slots.
+
+Type II:
+Number of files stored on the server was slightly higher (between 6 and 10)  than the number of available cache slots.
+
+Type III:
+Number of files stored on the server was equal to or less than the number of available cache slots.
+
+Additionally, there are variables that can be modified but do not effect the performance (ie port number, name of machine, etc).
+

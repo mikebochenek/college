@@ -1,0 +1,20 @@
+Michael Bochenek (ID) 0041056  (cs1790)
+login id: mboche01
+CIS 3430 Assignment #1
+
+
+BUILD:
+javac BasicComparator.java DatabaseInterface.java CustomerManager.java
+javac BasicComparator.java DatabaseInterface.java ProductManager.java
+
+
+RUN:
+java CustomerManager
+java ProductManager
+
+
+LIMITATIONS:
+
+
+BasicComparator.java  DatabaseInterface.java  README
+CustomerManager.java  ProductManager.java     requirements.txt

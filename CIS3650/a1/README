@@ -1,0 +1,16 @@
+
+/* CIS*3650 Organization and Implementation of Programming Languages
+   Assignment #1, Due: Sunday October 1, 2000
+   Michael Bochenek ID: 0041056 */
+
+COMPILING:
+Type 'make' to compile.
+
+EXECUTION:
+Type 'scantype' to execute the program.
+
+LIST OF FILES:
+fsa_def.h - header file for project
+scantype.c - source code for project
+makefile - used to compile
+README - this file

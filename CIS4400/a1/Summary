@@ -1,0 +1,25 @@
+S U M M A R Y
+
+A. Quick Introduction
+
+The tests were performed on Proxy 1 and on Proxy 2 as described in the other two documents.  Proxy 1 used a time-based scheme, where the least recently requested file was deleted when a new file was requested.  Proxy 2 used a frequency-based scheme, where the least frequently requested file was deleted when a new file was requested.  The cache refers to the local storage maintained by the proxy.
+
+B.  Summary
+
+In conclusion Proxy 2 (frequency-scheme) performed better than Proxy 1 (time-scheme).  There are many possible scenarios which can occur at any given time.  A file may be requested a large number of times at the start of the session, and then it may never be requested again.  In this case, the frequency-scheme would be inferior since it would waste a cache spot on a file that has not been requested for a long time, whereas the time-scheme would remove the once popular file, and replace it with a more current file.  On the other hand, a file may be requested at regular intervals of n seconds, and other files would be requested randomly in between the intervals.  In this case, the frequency-scheme would be superior because it would not delete the file, whereas the time-scheme would delete the file as soon as five new files are requested.
+
+Perhaps a better solution would be a proxy that takes into account the size of the file that is stored in the cache in addition to metrics such as access frequency and last time of access.
+
+Another improvement would be to store information on files that are not currently in the cache, but were stored at some point.  Thus if a relatively "popular" file is deleted from the proxy's cache, it will regain its rating when it is requested by another client in the future.
+
+C.  Additional findings and issues
+
+Even with all the simplifications made to the server-proxy-client system, it is still very difficult to implement.  Multithreading is easier in Java then C/C++, but it is still complicated.  Care must be taken when sharing resources such as the five file cache.
+
+The proxy maintains a list of files that are stored locally (cache) and this list can be modified by at most one client at a time.  Note that the proxy does not limit the number of clients that are simply viewing the list of files.  This was implemented using an array of ProxyFile objects, where the access was synchronized between the threads (using the synchronized keyword).
+
+At any given instant, only five DIFFERENT files may be requested.  If five clients are simultaneously requesting five different files, and a sixth client requests a different file, then that last client will have to sleep until one of the other five finishes.  However, that sixth client requests a file that is currently being downloaded by one of the other five clients, then that request will be processed without delay.  This was implemented using a simple integer variable which was synchronized between the threads (using the synchronized keyword).
+
+A great improvement would be to improve the download mechanism.  Currently, if a file is not stored locally by the proxy, then the proxy will download the entire file, and only then the client can begin copying it.  Ideally, the client would begin copying the file from the proxy as soon as the proxy begins to download the file from the server (similar to producer-consumer mechanism).  This feature was not implemented.
+
+

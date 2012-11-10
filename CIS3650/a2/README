@@ -1,0 +1,22 @@
+/* CIS*3650 Organization and Implementation of Programming Languages
+   Assignment #2, Due: Sunday October 22, 2000
+   Michael Bochenek ID: 0041056 */
+
+ERROR RECOVERY:
+The compiler attempts to recover from any errors in the source code 
+by INSERTING the missing token(s). 
+
+COMPILING:
+Type 'make' to compile.
+
+EXECUTION:
+Type 'parsedec' to execute the program.
+
+LIST OF FILES:
+makefile - used to compile.
+README - this file.
+parsedec.c - source code for the LL(1) Parser.
+parsedec.h - header file for LL(1) Parser.
+parsedec.lex - lex code for the scanner.
+y.tab.h - list of accepted tokens.
+

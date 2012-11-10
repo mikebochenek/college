@@ -1,0 +1,24 @@
+/**
+ * CIS*4430 Information Organization and Retrieval
+ * Assignment #1, due: Tuesday, Febraury 27, 2001
+ * Michael Bochenek [ID: 0041056]
+ * email: mboche01@uoguelph.ca
+ */
+
+COMPILING:
+	type 'make' to compile both p1 and p2
+
+EXECUTION:
+	'p1'
+	'p2'
+
+KEY ASSUMPTIONS:
+- I am assuming that the pointer takes 8-bytes because it is stored in a
+  character array as opposed to a more efficient method.
+- Key comparisons are done based by ASCII value, which means the comparisons
+  are case-sensitive
+
+
+KNOWN BUGS:
+- Deletion works only sometimes.
+

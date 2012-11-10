@@ -1,0 +1,124 @@
+Michael Bochenek (ID) 0041056
+CIS 3430 Assignment #2
+
+                     SOFTWARE REQUIREMENTS SPECIFICATION
+
+*** Introduction ***
+- The primary objective of the software system is to create an internet
+  shop with automated features.
+- The software system will be compromised of two interfaces:
+1) The customer module will enable customers to perform basic tasks such as:
+   subscription, purchases, data modification, and deletion.
+2) The manager module will enable managers to perform advanced administrative
+   tasks on the customer database, and on the product database.
+
+*** Information Description ***
+- Both databases will be saved in a plain text file.  
+  (This means that in theory the data file could be modified, but this 
+  is not recommended since the data is saved in a special format.)
+- Customer database:
+  - Will contain the following fields: surname, given name, e-mail,
+    phone number, mailing address, age group, sex, credit card number,
+    date of last purchase, permissions to receive e-mail promotions.
+  - The customer database will be sorted by surname
+    - if any surnames are the same, the entries will be sorted by given name
+    - if any given names are the same, the entries will be sorted by E-mail
+    - entries with identical surnames, names, and E-mail will be disallowed
+- Product database:
+   - Will contain the following fields: reference name, UPC, price,
+     amount on hand, shipping time, cost, supplier E-mail.
+   - The product database will be sorted by reference name
+     - If any reference names are the same, the entries will be sorted by UPC
+     - Entries with identical reference names, and UPC will be disallowed
+
+*** Functional Description ***
+- The Customer Module will enable customers to perform the following tasks:
+1) Subscribe - An individual must first subscribe before he or she can become
+   a customer and have the ability to make purchases.  During the subscription
+   process, the new customer will be asked to enter personal information such
+   as name, E-mail address, etc (See above for details).  The customer will be
+   accepted based on the data rules specified above (Trying to enter duplicate 
+   customers will result in error).  At this point the user will be assigned 
+   a randomly generated password.  The password can be changed at the
+	customer discretion.
+2) Browse Products - Will show all the products that are sold in the
+   store.  Product name, UPC code, price, quantity on hand, and the 
+	shipping time.  The following actions are defined: 
+	- A user that is not a member may browse the list of products,
+	  but as soon as he/she tries to purchase an item, they will be asked to
+	  log in.
+	- A user that is already logged in, may freely purchase an item.
+	- Upon selecing "Purchase"
+	  - The user will be asked to enter the quantity
+	    - The quantity will be checked for availability
+		 - If the quantity on hand does not meet needs.
+		   a) The customer will be notified through a message box.
+		   b) The supplier will be sent an e-mail with an order.
+	  - The user will then be asked to pick one out of three shipping methods.  
+	  - The user will be notified by e-mail of the purchase being placed. 
+	  - If the new quantity on hand is low (equal to zero), then the supplier
+	    will be sent an e-mail with an order.
+3) Modify Personal Data - This option will be disabled for users who are
+   currently not logged in.  The user will have the ability to change any
+   of the information provided during the subscription process.  Changing
+   of the name will only be permitted if that new name still satisfies the
+   data rules specified above.  Changing the password will not be allowed
+   here.
+4) Cease being a customer - This option will be disabled for users who are
+   currently not logged in.  Selecting this option will delete the customer
+   from the database of customers.  A customer may only delete himself or
+   herself. 
+5) Login - The user will be asked to enter the E-mail address and the
+   password.  As the password is typed, each character will appear as a
+   a star, in order to increase security.
+6) Logout - This option will be disabled for users who are currently not 
+   logged in.  This is a way for the customer to indicate that they wish
+   to leave the store.  Selecting this option will not exit the program.
+7) Change Password - The user will be asked to provide the E-mail 
+   address and the current password and enter the new password twice.
+   The new password will have to be at least 6 characters in length.
+   When entering the old and new passwords, each character typed will appear 
+	as a star, in order to increase security.
+- The Manager Module can be accessed locally and remotely:
+  - When accessing remotely the manager will need to provide a login
+    and a password (see README file).
+  - When accessing locally, the program is run in the same directory
+    as the database files.
+- The Manager Module will enable managers to perform the following tasks:
+- Managing the Customer Database:
+1) Inclusion - new customers will be added (in correct order) into
+   database.  Trying to enter duplicate customers will result in error.
+   (Duplicate customers are customers that have identical surnames,
+   given names, and e-mail addresses).
+2) Modification - first the manager would specify which customer to edit, and 
+   once this customer is found, the manager would be able to modify the fields
+3) Deletion - the manager would enter the surname or given name or e-mail 
+   of the customer to be deleted, and the system would request confirmation
+   before a deletion is performed.  If multiple customers match the criteria
+   then a prompt will be displayed for each customer.
+4) Query - Will search all for customers that have similar characteristics.
+5) E-mail - sending of promotional E-mail to customers is performed here. 
+   Only the users that agreed to receive mass E-mail will be included in the 
+	mailing list.  The manager will type the message to be send out and 
+	all willing customers will receive the advertisement.
+- Managing the Product Database:
+1) Inclusion - new products will be added (in correct order) into database.
+   Trying to enter duplicate products will result in error. (Duplicate 
+   products are products that have identical reference names, and UPCs)
+2) Modification - first the manager would specify which product to edit, and
+   once this product is found, the manager would be able to modify the fields
+3) Deletion - the manager would enter the reference name or UPC or supplier
+   of he product to be deleted, and the system would request confirmation
+   before a deletion is performed.  If multiple products match the criteria
+   then a prompt will be displayed for each product.
+4) Supply Query - the user will enter search criteria, and a list
+   of products will be generated.  From this list, only the products which
+   have less than 10 items on hand will be selected.  This list of products
+   (and associated information) will be displayed.
+
+*** Validation Criteria ***
+- Items should be added, deleted, searched in the database efficiently.
+  (those operations should preferably have a time complexity of lg (n))
+- The manager should be notified of when an error occurs when writing/reading
+  to/from the database file.
+

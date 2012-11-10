@@ -1,0 +1,51 @@
+E X P E R I M E N T S
+
+A.  Modifying the test to concentrate on variables that produced significant results
+
+- number of simultaneous clients that are requesting files without pause:
+This did not seem to effect testing.  It did increase the load but when comparing the two schemes there were no significant variations.
+
+- size of files that are stored on the server
+This did not seem to effect testing.  It did increase the load but when comparing the two schemes there were no significant variations.
+
+- number of total requests made by each client
+This had no effect at all on the testing.
+
+- number of unique files stored on the main file server
+This variable had the biggest effect on the testing.  Assuming that the client requests one of the available files on the server, with an equal probability of selection a particular file.  This assumption is usually correct.  However, there are many cases when this is not the case.  For example, a popular application (winzip) or a popular game (quake) will be requested many more times than an application that has a much narrow audience.
+
+B.  Findings
+
+Overall the two schemes are very similar in terms of performance.  The comparisons below show the ratio of cache hits vs. cache misses.
+
+Type I: (100 files on server)
+Proxy 1 (time): 0 hits and 1000 misses (5 tests)
+Proxy 2 (frequency): 0 hits and 1000 misses (5 tests)
+
+Type II: 
+(6 files on server)
+Proxy 1 (time): 846 hits and 154 misses (Worse)
+Proxy 2 (frequency): 910 hits and 90 misses (Better)
+ (7 files on server)
+Proxy 1 (time): 687 hits and 313 misses (Worse)
+Proxy 2 (frequency): 736 hits and 264 misses (Better)
+(8 files on server)
+Proxy 1 (time): 713 hits and 287 misses (Better)
+Proxy 2 (frequency): 612 hits and 388 misses (Worse)
+(9 files on server)
+Proxy 1 (time): 585 hits and 415 misses (Better)
+Proxy 2 (frequency): 550 hits and 450 misses (Worse)
+(10 files on server)
+Proxy 1 (time): 573 hits and 427 misses (Better)
+Proxy 2 (frequency): 552 hits and 448 misses (Worse)
+
+5 Tests were performed in each case (two with one client, two with two clients, and one with three clients).  Client(s) would "simultaneously" make a request for 1000 different files in a randomly generated sequence.
+
+Type III: (5 files on server)
+Proxy 1 (time): 1000 hits and 0 misses (2 tests)
+Proxy 2 (frequency): 1000 hits and 0 misses (2 tests)
+
+C.  Conclusions
+
+The time-based scheme was generally than the frequency-based scheme because of the fact that the files were requested in a random order.  Creating a random sequence of file requests has a tendency to distribute the files evenly (so that if there are n files, subsequent requests of the same file will on average be separated by n requests for other files).
+

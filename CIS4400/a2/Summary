@@ -1,0 +1,20 @@
+Michael Bochenek
+mboche01@uoguelph.ca
+0041056
+CIS*4400 Distributed Information Systems Architectures
+Assignment 2:  Talking to the magic ORB!
+
+SUMMARY
+-------
+
+The biggest problem was getting the client and server talking to each other.
+Once that was out of the way, it was pretty much downhill, except for a minor
+setback dealing with data types in NeuralNetDataImpl.java, which had
+to match the data types specified in NeuralNetData.idl according to
+the funky rules as explained in the textbook.
+
+The Java programming was straightforward.
+
+Oh, yeah, I even got CORBA throwing exceptions (when you try to 
+add the same dataset twice).
+

@@ -1,0 +1,63 @@
+/* CIS*4600 Elements of Theory of Computation
+   Assignment #1, Due: Tuesday October 3, 2000
+   Michael Bochenek ID: 0041056 */
+
+COMPILING:
+	type 'make' to compile.
+
+EXECUTION:
+	type 'a1 file_a file_q' - where file_a is the name of the file
+containg the automation file, and file_q is the name of the file containing
+the strings that are to be tested.
+
+*** IMPORTANT ***:
+Regarding Question 6:  A Deterministic FINITE state automaton cannot be 
+created for this question because the proposed task requires a "counting" DFA,
+and simply put a DFA cannot count.  A DFA for a finite string lenght of n
+(6 was used in this question) is the best that we can do.
+
+LIST OF INCLUDED FILES:
+	README - this file (you are reading)
+	a1* - Assignment #1 executable
+	a1-generator.c - Generator used to create que_x, where x E (1,2,3,4,5,6)
+	a1.c - source code for the main program (a1*)
+	ans1 - automation file for question #1
+	ans2 - automation file for question #2
+	ans3 - automation file for question #3
+	ans4 - automation file for question #4
+	ans5 - automation file for question #5
+	ans6 - automation file for question #6
+	makefile - makefile used to compile the project
+	que1 - test strings for question #1
+	que2 - test strings for question #2
+	que3 - test strings for question #3
+	que4 - test strings for question #4
+	que5 - test strings for question #5
+	que6 - test strings for question #6
+
+EXAMPLE AUTOMATION FILE:
+
+Here is an example automation file.  It has 14 total states, and 8 of them
+are accept states (1,3,5,7,9,11,13).  All the possible transitions are
+listed starting on the third line, with "1 2 a", which means that there
+is a transition from State#1 to State#2 on input character 'a'.
+
+14
+1 3 5 7 8 9 11 13
+1 2 a
+2 3 a
+3 4 a
+4 5 a
+5 6 a
+6 7 a
+7 8 a
+8 9 a
+9 10 a
+10 11 a
+11 12 a
+12 13 a
+13 14 a
+14 1 a
+
+
+end.

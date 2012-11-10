@@ -1,0 +1,11 @@
+Bochenek;Mike;mboche01@uoguelph.ca;310-1231;P.O. Box 9032;Guelph;Ontario Canada;20-29;Male;323323232;Feb 20, 2000;Yes
+Doe;Jane;janedoe@newemails.com;891-1290;1234 Stuart St.;Guelph;Ontario, Canada;20-29;Female;90238954;None;No
+Doe;Jane;mbochene@hotmail.com;0430943;East Rez; ; ;10-19;Female;32322323; ;Yes
+Grech;Paul;pgrech@uoguelph.ca;32323232;unknown; ; ;20-29;Female;3223323; ;No
+Jones;Ken;kjones01@uoguelph.ca;4389438932;12 Smith St; ; ;20-29;Male;3232233; ;No
+Kid;Small;peoplelove@smalltalk.com;8923-094390;Unknown St;Apartment Random Number;Springfield;50+;Male;89329832;Feb 21, 1999;No
+Kogan;Jason;jason@blackholedesign.com;818-1280;Suite 1093;University Of Guelph;Guelph, Ontario, Canada;20-29;Male;32236576;February 31, 2000;Yes
+Rozek;Dave;drozek@uoguelph.ca;3093290;none; ; ;20-29;Female;3232323;Feb 21, 2000;No
+Smith;Johnny;j@unknownemail.com;902-1290-1234;Somewhere 129;ViewCity;Ontario, Canada;0-9;Male;12432341;Septembere 19, 1891;No
+Smith;Michael;mikesmith@now.com;932-1290;91 Smith St.;Smithville;Ontario, Canada;40-49;Male;903903290; ;No
+Unknown;SomeName;someguy@somewhere.com;981-1200;SomeStreet 99;SomeCity;SomeProvince, SomeCountry;10-19;Male;89239032; ;No

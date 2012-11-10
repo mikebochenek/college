@@ -1,0 +1,34 @@
+/**
+ * Michael Bochenek (ID: 0041056)
+ * CIS*4400 Distributed Information Systems Architectures
+ * Assignment #1.  Friday, January 26, 2001
+ */
+
+COMPILING:
+
+Type 'make' to compile the program (JDK must be installed).
+
+
+EXECUTION:
+
+* Main File Server:
+java MainFS port#
+   where port# is the port number on which to listen on
+
+* Proxy1 & Proxy2:
+java ProxyX local_port# remote_machine_name remote_port#
+   where local_port# is the port number on which to listen on for clients
+   where remote_machine_name is name of the machine that hosts MainFS
+   where remote_port# is the port number that MainFS is listening on
+
+* File Client:
+java FClient remote_machine_name remote_port#
+   where remote_machine_name is the name of the machine that hosts the proxy
+   where remote_port# is the port number that the proxy is listening on
+
+
+java FClient remote_machine_name remote_port# command
+   where remote_machine_name is the name of the machine that hosts the proxy
+   where remote_port# is the port number that the proxy is listening on
+   where command is the command to be run on the client
+

@@ -1,0 +1,41 @@
+/* CIS*4750 Artificial Intelligence
+   Assignment #2 (3.17), Due: Tuesday October 3, 2000
+   Michael Bochenek ID: 0041056 mboche01@uoguelph.ca */
+
+COMPILING:
+	type 'make' to compile.
+
+
+EXECUTION:
+	type 'vacuum' to run. 
+
+
+QUESTIONS FROM THE TEXTBOOK:
+3.17
+(a) Defining the problem:
+Initial state : This is the state of the world according to the agent.  
+   Here, all the agent knows is that it is somewhere inside a 3x3 matrix.
+Operators : There are 4 actions available to the agent: move forward, turn
+   right 90 degrees, turn left 90 degrees, and suck up dirt.
+Goal test function : If the agent has visited all the of the nine squares,
+   then it has achieved it's goal.
+Path cost function : The cost function is as outline in question 2.5, namely
+   +100 points for each piece of dirt sucked up, and -1 point for each action.
+
+(b) The iterative depth search is best suited.
+
+(c) This question is answered by the program 'vacuum'.
+
+(d) This question is answered by the program 'vacuum'.
+
+(e) Computation time is not an issue in either simulation.
+
+(f) not required.
+
+
+LIST OF INCLUDED FILES:
+	README - this file (you are reading)
+	a2.c - Assignment #2 source code
+	a2.h - Assignment #2 source code
+   makefile - makefile
+

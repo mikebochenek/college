@@ -1,0 +1,70 @@
+Michael Bochenek
+mboche01@uoguelph.ca
+0041056
+CIS*4400 Distributed Information Systems Architectures
+Assignment 2:  Talking to the magic ORB!
+
+DESCRIPTION
+------------
+
+*** Execution ***
+
+(1) you need to first launch osagent (ie 'osagent &')
+
+(2) type 'make' to compile
+
+(3) type 'vbj Server' to launch the Server
+
+(4) type 'vbj Client1 hostname FirstExample' or 
+    'vbj Client1 hostname SecondExample' to launch Client1.
+    (also, you can run it with any other file which conforms to standard 
+     posted on the web)
+
+(5) type 'vbj Client2 hostname FirstExample' or 
+    'vbj Client2 hostname SecondExample' to launch Client2.
+    The filename provided in step (4) is used to name the dataset, and 
+    thus Client2 is invoked with the same dataset name (at this stage the 
+    files FirstExample and SecondExample may be removed from the directory).
+
+NOTE:  While steps (1), (2) and (3) must be executed in sequance, and once only,
+steps (4) and (5) may be executed multiple times in any order.
+
+
+*** Design ***
+
+Client1, Client2 and Server work as specified in the assignment (uninteresting).
+
+-> The Server is able to store (and serve) data on more than one dataset.
+   Thus the dataset name is significant.
+-> Calculating the median for even numbers is done by 'rounding-up'
+   (in other words the median for a set of 10 numbers will be the 6th number, 
+    not the 5th). 
+-> In theory you could add two datasets simultanously, and perform queries at 
+   the same time.
+-> If you wish to modify the source code and attempt different tests, please 
+   do so with caution, and refer to Client1.java and Client2.java for examples.
+-> run 'javadoc *.java' to see description of classes and methods.
+
+
+*** File list ***
+
+README - this file
+Description - how the system works
+Limits - any limitations
+Summary - what we've learned
+
+FirstExample - example from the course website
+SecondExample - slightly expanded example
+
+Makefile - makefile
+NeuralNetData.idl - interface def
+BasicComparator.java - Util class to 
+Client1.java - client#1 as outlined in assignment
+Client2.java - client#2 as outlined in assignment
+NeuralNetDataImpl.java - implementation of interface defined in .idl
+Server.java - server as outline in assignment
+
+
+*** Troubleshooting ***
+
+Program works 100% in Reynolds 114.

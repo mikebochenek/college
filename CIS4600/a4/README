@@ -1,0 +1,19 @@
+/* CIS*4600 Elements of Theory of Computation
+   Assignment #4, Due: Thursday, November 30, 2000
+   Michael Bochenek ID: 0041056 */
+
+COMPILING:
+	type 'make' to compile.
+
+EXECUTION:
+	type 'a4 string' - where 'string' is the input string 
+
+LIST OF INCLUDED FILES:
+	README - this file (you are reading)
+	a4* - Assignment #4 executable
+	a4.c - source code for the main program (a4*)
+	a4.h - header file for the main program (a4*)
+	makefile - makefile used to compile the project
+
+end.
+
