@@ -1,0 +1,10 @@
+List of known bugs:
+
+* resizing the browser window kicks you out to "Main Screen"
+* the buttons have a tendency to get confused and after a long time
+  they don't work the way that they should
+* there is no way of letting the user enter a linear programming problem
+* simplex method performs only for the specified problem
+
+~
+

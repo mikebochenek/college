@@ -1,0 +1,96 @@
+#
+# Independent Study Project
+# MATH*4240 Advanced Topics in Modelling (Winter 2001)
+# Michael Bochenek [ID: 0041056] mboche01@uoguelph.ca
+#
+
+all : SimpleLine.class Intersection.class MathUtil.class Const.class ColorSet.class UserProblem.class HelpMenu.class Library.class OptionsMenu.class Screen.class SimpleButton.class Options.class Constraint.class GraphicalMethod.class Number.class Vertex.class ComplexConstraint.class SimplexTableau.class ConstraintContainer.class ZFunction.class SimpleConstraint.class TableData.class SimplexMethod.class BigMMethod.class Main.class MainMenu.class
+	jar cf lib.jar *.class
+
+SimpleLine.class : SimpleLine.java
+	javac SimpleLine.java
+
+Intersection.class : Intersection.java
+	javac Intersection.java
+
+MathUtil.class : MathUtil.java
+	javac MathUtil.java
+
+Const.class : Const.java
+	javac Const.java
+
+ColorSet.class : ColorSet.java
+	javac ColorSet.java
+
+UserProblem.class : UserProblem.java
+	javac UserProblem.java
+
+HelpMenu.class : HelpMenu.java
+	javac HelpMenu.java
+
+Library.class : Library.java
+	javac Library.java
+
+Screen.class : Screen.java
+	javac Screen.java
+
+OptionsMenu.class : OptionsMenu.java
+	javac OptionsMenu.java
+
+SimpleButton.class : SimpleButton.java
+	javac SimpleButton.java
+
+Options.class : Options.java
+	javac Options.java
+
+MainMenu.class : MainMenu.java
+	javac MainMenu.java
+
+Main.class : Main.java
+	javac Main.java
+
+BigMMethod.class : BigMMethod.java
+	javac BigMMethod.java
+
+SimplexMethod.class : SimplexMethod.java
+	javac SimplexMethod.java
+
+TableData.class : TableData.java
+	javac TableData.java
+
+ZFunction.class : ZFunction.java
+	javac ZFunction.java
+
+SimpleConstraint.class : SimpleConstraint.java
+	javac SimpleConstraint.java
+
+ConstraintContainer.class : ConstraintContainer.java
+	javac ConstraintContainer.java
+
+SimplexTableau.class : SimplexTableau.java
+	javac SimplexTableau.java
+
+ComplexConstraint.class : ComplexConstraint.java
+	javac ComplexConstraint.java
+
+Constraint.class : Constraint.java
+	javac Constraint.java
+
+GraphicalMethod.class : GraphicalMethod.java
+	javac GraphicalMethod.java
+
+Number.class : Number.java
+	javac Number.java
+
+Vertex.class : Vertex.java
+	javac Vertex.java
+
+run : 
+	appletviewer index.html
+
+javadoc :
+	javadoc -d doc -private -author *.java
+
+clean :
+	rm -rf *.class *.jar doc/*
+

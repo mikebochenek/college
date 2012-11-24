@@ -1,0 +1,46 @@
+DEMO SCRIPT
+(strong things first, weaknesses last)
+
+1) Set due date for documentation (Tuesday 12:00 - noon)
+
+2) Main Menu
+
+* lightening quick overview of what each button does
+
+3) Graphical Method & Library
+
+* Play with the loaded problem
+* list of constraints
+* clicking on graph field -> updates on text field
+* library of problems (from textbook and modified)
+* show problems #3, #5, #6
+
+4) Simplex Method
+
+* point out that the problem is hard coded, BUT...
+* step through 'Next' and show each message
+* go to end and show final message
+
+5) Options
+
+* purpose of resolution menu (not implemented, but close)
+* black and white is for printing
+* load up 'groovy'
+
+6) Help
+
+* go into help button
+
+7) Edit a LP problem
+
+* can display loaded problems
+* can clear and begin to input data
+
+8) Back to main page
+
+* show known bugs
+* show todo list
+* show java source code
+* show javadoc (industry standard)
+
+

@@ -1,0 +1,8 @@
+These things would ideally need to get done...
+
+* implement a proper way for user to enter problems
+* changing resolutions
+* linking simplex method to everything else
+* more testing....
+
+
